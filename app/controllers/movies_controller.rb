@@ -13,6 +13,14 @@ class MoviesController < ApplicationController
   
   end
   
+  def destroy
+    x = params.fetch("an_id")
+    match = Movie.where({id: x})
+    match.at(0).destroy
+
+    redirect_to("/movies")
+
+  end
   
   
   def index
