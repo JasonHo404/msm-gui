@@ -6,6 +6,42 @@ class ActorsController < ApplicationController
     render({ :template => "actor_templates/index" })
   end
 
+
+  def create
+    a = Actor.new
+    a.name = params.fetch("Name")
+    a.dob = params.fetch("query_dob")
+    a.bio = params.fetch("query_bio")
+    a.image = params.fetch("Image")
+    a.save
+    
+    redirect_to("/actors")
+  
+  end
+
+  def destroy
+    x = params.fetch("an_id")
+    match = Actor.where({id: x})
+    match.at(0).destroy
+
+    redirect_to("/actors")
+
+  end
+
+  def update
+    x = params.fetch("an_id")
+    match = Actor.where({id: x})
+    a = match[0]
+
+    a.name = params.fetch("Name")
+    a.dob = params.fetch("query_dob")
+    a.bio = params.fetch("query_bio")
+    a.image = params.fetch("Image")
+    a.save
+  
+    redirect_to("/actors/#{a.id}")
+  end
+
   def show
     the_id = params.fetch("path_id")
 

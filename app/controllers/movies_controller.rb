@@ -21,7 +21,23 @@ class MoviesController < ApplicationController
     redirect_to("/movies")
 
   end
+
+  def update
+    x = params.fetch("an_id")
+    match = Movie.where({id: x})
+    m = match[0]
+
+    m.title = params.fetch("Title")
+    m.year = params.fetch("the_year")
+    m.duration = params.fetch("the_duration")
+    m.description = params.fetch("the_description")
+    m.image = params.fetch("the_image")
+    m.director_id = params.fetch("the_director_id")
+    m.save   
   
+    redirect_to("/movies/#{m.id}")
+  end
+
   
   def index
     matching_movies = Movie.all
