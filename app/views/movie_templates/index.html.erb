@@ -6,7 +6,7 @@
   
   <div>
   <label for="title_field">Title</label>
-  <input id = "title_filed" type="text" name="the_title">
+  <input id = "title_filed" type="text" name="Title">
   </div>
 
   <div>
@@ -35,7 +35,7 @@
 </div>
 
 <button>
-  Create Movie
+  Create movie
 </button>
 
 
@@ -99,7 +99,13 @@
       
       <% the_director = matching_directors.at(0) %>
 
-      <%= the_director.name %>
+      <% if the_director == nil %>
+        Uh oh! We weren't able to find a director for this movie.
+
+      <% else %>
+        <%= the_director.name%>
+      <% end %>
+
     </td>
 
     <td>

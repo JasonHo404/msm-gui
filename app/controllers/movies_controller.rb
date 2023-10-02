@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   def create
     m = Movie.new
-    m.title = params.fetch("the_title")
+    m.title = params.fetch("Title")
     m.year = params.fetch("the_year")
     m.duration = params.fetch("the_duration")
     m.description = params.fetch("the_description")
